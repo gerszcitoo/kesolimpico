@@ -1,0 +1,131 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+<body class="pantalla">
+    <div class="contenedor contenido-principal">
+        <!-- SI YA TIENE CUENTA, LOGIN -->
+        <div class="login imgLogin">
+            <div class="loginLink">
+                <h1 class="welcome">¡Bienvenido a Kesolimpico</h1>
+                <span class="si-cuenta">¿Ya tenés una cuenta?</span><br />
+                <button type="submit" class="btn-loginOwn" routerLink="/login">Inicia sesión</button>
+            </div>
+        </div>
+        <!-- FIN LOGIN -->
+
+        <div class="success">
+            <div class="formRegister">
+                <div class="alert alert-success" *ngIf="success">
+                    <strong>Registro exitoso.</strong> Por favor espere a que un administrador active su cuenta.
+                </div>
+
+                <div class="alert alert-danger" *ngIf="error"><strong>Algo falló!</strong> Por favor, intentalo de nuevo mas tarde</div>
+
+                <div class="alert alert-danger" *ngIf="errorUserExists"><strong>Ese nombre ya está en uso!</strong> Por favor utiliza otro.</div>
+
+                <div class="alert alert-danger" *ngIf="errorEmailExists"><strong>Ese email ya está en uso!</strong> Por favor utiliza otro.</div>
+
+                <div class="alert alert-danger" *ngIf="doNotMatch">La contraseña y su confirmación no coinciden!</div>
+            </div>
+        </div>
+        <!-- FIN SUCCESS -->
+
+        <div class="register">
+            <div class="col-md-8">
+                <form name="form" class="formulario" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
+                    <div class="register-img"></div>
+                    <h1 class="titulo" data-cy="registerTitle">Registrarse</h1>
+                    <div class="formulario-group">
+                        <input type="text" class="formulario-control" id="login" name="login" formControlName="login" data-cy="username" placeholder="Usuario" #login />
+
+                        <div *ngIf="registerForm.get('login')!.invalid && (registerForm.get('login')!.dirty || registerForm.get('login')!.touched)">
+                            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.required">
+                Es necesario ingresar un nombre de usuario.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.minlength">
+                Tu nombre de usuario debe contener al menos 1 caracter.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.maxlength">
+                Tu nombre de usuario debe contener menos de 50 caracteres.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.pattern">
+                Tu nombre de usuario sólo puede tener números o letras.
+              </small>
+                        </div>
+                    </div>
+                    <!-- CAMBIO CAMPO FORMULARIO -->
+                    <div class="formulario-group">
+                        <input type="email" class="formulario-control" id="email" name="email" placeholder="Email" formControlName="email" data-cy="email" />
+
+                        <div *ngIf="registerForm.get('email')!.invalid && (registerForm.get('email')!.dirty || registerForm.get('email')!.touched)">
+                            <small class="form-text text-danger" *ngIf="registerForm.get('email')?.errors?.required">
+                Es necesario ingresar un email.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('email')?.errors?.invalid">
+                El email que ingresaste no es válido.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('email')?.errors?.minlength">
+                El email ingresado debe contener al menos 5 caracteres.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('email')?.errors?.maxlength">
+                Tu email debe contener menos de 100 caracteres.
+              </small>
+                        </div>
+                    </div>
+
+                    <div class="formulario-group">
+                        <input type="password" class="formulario-control" id="password" name="password" placeholder="Contraseña" formControlName="password" data-cy="firstPassword" />
+
+                        <div *ngIf="
+                registerForm.get('password')!.invalid && (registerForm.get('password')!.dirty || registerForm.get('password')!.touched)
+              ">
+                            <small class="form-text text-danger" *ngIf="registerForm.get('password')?.errors?.required">
+                Es necesario ingresar una contraseña.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('password')?.errors?.minlength">
+                Tu contraseña debe tener al menos 4 caracteres.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('password')?.errors?.maxlength">
+                Tu contraseña debe contener menos de 50 caracteres.
+              </small>
+                        </div>
+
+                        <jhi-password-strength-bar [passwordToCheck]="registerForm.get('password')!.value"></jhi-password-strength-bar>
+                    </div>
+
+                    <div class="formulario-group confirmPassword">
+                        <input type="password" class="formulario-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmar contraseña" formControlName="confirmPassword" data-cy="secondPassword" />
+
+                        <div *ngIf="
+                registerForm.get('confirmPassword')!.invalid &&
+                (registerForm.get('confirmPassword')!.dirty || registerForm.get('confirmPassword')!.touched)
+              ">
+                            <small class="form-text text-danger" *ngIf="registerForm.get('confirmPassword')?.errors?.required">
+                Es necesario confirmar la contraseña.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('confirmPassword')?.errors?.minlength">
+                La contraseña a confirmar debe contener al menos 4 caracteres.
+              </small>
+
+                            <small class="form-text text-danger" *ngIf="registerForm.get('confirmPassword')?.errors?.maxlength">
+                La contraseña a confirmar debe contener menos de 50 caracteres.
+              </small>
+                        </div>
+                    </div>
+
+                    <button type="submit" [disabled]="registerForm.invalid" class="btn-registerOwn" data-cy="submit">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

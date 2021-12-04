@@ -1,0 +1,46 @@
+{
+  "name": "Fermentos",
+  "fields": [
+    {
+      "fieldName": "fecha",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "peso",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "calidad",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMin": "1",
+      "fieldValidateRulesMax": "10"
+    },
+    {
+      "fieldName": "detalle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoQueso",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "sectorProduccion",
+      "otherEntityRelationshipName": "fermentos",
+      "relationshipName": "sectorProduccion"
+    }
+  ],
+  "entityTableName": "fermentos",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211124042643"
+}

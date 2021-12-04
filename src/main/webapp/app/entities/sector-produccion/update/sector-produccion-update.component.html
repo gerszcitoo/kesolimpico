@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-sector-produccion-heading" data-cy="SectorProduccionCreateUpdateHeading">Crear o editar un Sector de Producción</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_peso">Peso</label>
+          <input type="number" class="form-control" name="peso" id="field_peso" data-cy="peso" formControlName="peso" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fermentos">Fermentos (ID)</label>
+          <select class="form-control" id="field_fermentos" data-cy="fermentos" name="fermentos" formControlName="fermentos">
+            <option value="" selected hidden></option>
+            <option
+              [ngValue]="fermentosOption.id === editForm.get('fermentos')!.value?.id ? editForm.get('fermentos')!.value : fermentosOption"
+              *ngFor="let fermentosOption of fermentosSharedCollection; trackBy: trackFermentosById"
+            >
+              {{ fermentosOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_recepcion">Recepción (ID)</label>
+          <select class="form-control" id="field_recepcion" data-cy="recepcion" name="recepcion" formControlName="recepcion">
+            <option value="" selected hidden></option>
+            <option
+              [ngValue]="recepcionOption.id === editForm.get('recepcion')!.value?.id ? editForm.get('recepcion')!.value : recepcionOption"
+              *ngFor="let recepcionOption of recepcionsSharedCollection; trackBy: trackRecepcionById"
+            >
+              {{ recepcionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

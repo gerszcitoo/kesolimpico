@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="recepcion">
+            <h2 data-cy="recepcionDetailsHeading"><span>Recepción</span></h2>
+
+            <hr />
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <jhi-alert></jhi-alert>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>ID</span></dt>
+                <dd>
+                    <span>{{ recepcion.id }}</span>
+                </dd>
+                <dt><span>Fecha</span></dt>
+                <dd>
+                    <span>{{ recepcion.fecha | formatMediumDatetime }}</span>
+                </dd>
+                <dt><span>Calidad</span></dt>
+                <dd>
+                    <span>{{ recepcion.calidad }}</span>
+                </dd>
+                <dt><span>Cantidad</span></dt>
+                <dd>
+                    <span>{{ recepcion.cantidad }}</span>
+                </dd>
+                <dt><span>Analisis</span></dt>
+                <dd>
+                    <span>{{ recepcion.analisis }}</span>
+                </dd>
+                <dt><span>Tambo</span></dt>
+                <dd>
+                    <span>{{ recepcion.tambo }}</span>
+                </dd>
+                <dt><span>Temperatura</span></dt>
+                <dd>
+                    <span>{{ recepcion.temperatura }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Atrás</span>
+      </button>
+
+            <button type="button" [routerLink]="['/recepcion', recepcion.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+entity Cisterna {
+	estado String
+    volumen Integer
+}
+entity Recepcion {
+    fecha Instant
+    calidad Integer min(1) max(10)
+    cantidad Integer
+    analisis String
+    tambo String
+    temperatura Integer
+}
+entity Fermentos {
+    fecha Instant
+    peso Integer
+    calidad Integer min(1) max(10)
+    detalle String
+    tipoQueso String
+}
+
+entity SectorProduccion {
+    peso Integer
+    
+}
+entity SectorCurado {
+    fechaEnt Instant
+    fechaSal Instant
+    temperatura Integer
+    calidad Integer min(1) max(10)
+    humedad Integer
+    co2 Integer
+    pesoEnt Integer
+    pesoSal Integer
+}
+entity Saladero {
+	fechaEnt Instant
+    fechaSal Instant
+    peso Integer
+}
+entity Almacen {
+	estado Integer min(1) max(10)
+    fechaEnt Instant
+    fechaSal Instant
+    
+}
+
+enum Quesos {
+	Azul, 
+    Colonia, 
+    Cremoso, 
+    Criollo, 
+    Cuartirolo, 
+    Edam, 
+    Fontina, 
+    Gouda, 
+    Gruyere, 
+    Holanda, 
+    Pategras, 
+    Pepato, 
+    Provolone, 
+    Romano, 
+    Sardo, 
+    Sbrinz, 
+    Tandil, 
+    Tybo
+}
+relationship OneToMany {
+	Fermentos to SectorProduccion
+    Recepcion to SectorProduccion
+}
+dto all with mapstruct
+paginate all with pagination

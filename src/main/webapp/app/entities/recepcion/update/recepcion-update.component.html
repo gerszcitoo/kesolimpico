@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-recepcion-heading" data-cy="RecepcionCreateUpdateHeading">Crear o editar una Recepción</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+                    <label class="form-control-label" for="field_id">ID</label>
+                    <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fecha">Fecha</label>
+                    <div class="d-flex">
+                        <input id="field_fecha" data-cy="fecha" type="datetime-local" class="form-control" name="fecha" formControlName="fecha" placeholder="AAAA-MM-DD HH:mm" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_calidad">Calidad</label>
+                    <input type="number" class="form-control" name="calidad" id="field_calidad" data-cy="calidad" formControlName="calidad" />
+                    <div *ngIf="editForm.get('calidad')!.invalid && (editForm.get('calidad')!.dirty || editForm.get('calidad')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('calidad')?.errors?.min"> El valor debe ser 1 o mayor. </small>
+                        <small class="form-text text-danger" *ngIf="editForm.get('calidad')?.errors?.max"> El valor no puede ser mayor a 10. </small>
+                        <small class="form-text text-danger" [hidden]="!editForm.get('calidad')?.errors?.number"> El valor debe ser un número. </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cantidad">Cantidad</label>
+                    <input type="number" class="form-control" name="cantidad" id="field_cantidad" data-cy="cantidad" formControlName="cantidad" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_analisis">Analisis</label>
+                    <input type="text" class="form-control" name="analisis" id="field_analisis" data-cy="analisis" formControlName="analisis" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tambo">Tambo</label>
+                    <input type="text" class="form-control" name="tambo" id="field_tambo" data-cy="tambo" formControlName="tambo" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_temperatura">Temperatura</label>
+                    <input type="number" class="form-control" name="temperatura" id="field_temperatura" data-cy="temperatura" formControlName="temperatura" />
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancelar</span>
+        </button>
+
+                <button type="submit" id="save-entity" data-cy="entityCreateSaveButton" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Guardar</span>
+        </button>
+            </div>
+        </form>
+    </div>
+</div>

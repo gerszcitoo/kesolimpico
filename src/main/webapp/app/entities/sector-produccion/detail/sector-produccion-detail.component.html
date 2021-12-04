@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sectorProduccion">
+            <h2 data-cy="sectorProduccionDetailsHeading"><span>Sector de Producción</span></h2>
+
+            <hr />
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <jhi-alert></jhi-alert>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>ID</span></dt>
+                <dd>
+                    <span>{{ sectorProduccion.id }}</span>
+                </dd>
+                <dt><span>Peso</span></dt>
+                <dd>
+                    <span>{{ sectorProduccion.peso }}</span>
+                </dd>
+                <dt><span>Fermentos</span></dt>
+                <dd>
+                    <div *ngIf="sectorProduccion.fermentos">
+                        <a [routerLink]="['/fermentos', sectorProduccion.fermentos?.id, 'view']">{{ sectorProduccion.fermentos?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Recepción</span></dt>
+                <dd>
+                    <div *ngIf="sectorProduccion.recepcion">
+                        <a [routerLink]="['/recepcion', sectorProduccion.recepcion?.id, 'view']">{{ sectorProduccion.recepcion?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Atrás</span>
+      </button>
+
+            <button type="button" [routerLink]="['/sector-produccion', sectorProduccion.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fermentos">
+            <h2 data-cy="fermentosDetailsHeading"><span>Fermento</span></h2>
+
+            <hr />
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <jhi-alert></jhi-alert>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>ID</span></dt>
+                <dd>
+                    <span>{{ fermentos.id }}</span>
+                </dd>
+                <dt><span>Fecha</span></dt>
+                <dd>
+                    <span>{{ fermentos.fecha | formatMediumDatetime }}</span>
+                </dd>
+                <dt><span>Peso</span></dt>
+                <dd>
+                    <span>{{ fermentos.peso }}</span>
+                </dd>
+                <dt><span>Calidad</span></dt>
+                <dd>
+                    <span>{{ fermentos.calidad }}</span>
+                </dd>
+                <dt><span>Detalle</span></dt>
+                <dd>
+                    <span>{{ fermentos.detalle }}</span>
+                </dd>
+                <dt><span>Tipo Queso</span></dt>
+                <dd>
+                    <span>{{ fermentos.tipoQueso }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Atrás</span>
+      </button>
+
+            <button type="button" [routerLink]="['/fermentos', fermentos.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+        </div>
+    </div>
+</div>

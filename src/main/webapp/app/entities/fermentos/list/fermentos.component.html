@@ -1,0 +1,99 @@
+<div>
+    <h2 id="page-heading" data-cy="FermentosHeading">
+        <span>Fermentos</span>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refrescar Lista</span>
+      </button>
+
+            <button id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-fermentos" [routerLink]="['/fermentos/new']">
+        <fa-icon icon="plus"></fa-icon>
+        <span> Crear un nuevo Fermento </span>
+      </button>
+        </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="fermentos?.length === 0">
+        <span>No se encontraron fermentos</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="fermentos && fermentos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col" jhiSortBy="id">
+                        <span>ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="fecha">
+                        <span>Fecha</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="peso">
+                        <span>Peso</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="calidad">
+                        <span>Calidad</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="detalle">
+                        <span>Detalle</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="tipoQueso">
+                        <span>Tipo Queso</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fermentos of fermentos; trackBy: trackId" data-cy="entityTable">
+                    <td>
+                        <a [routerLink]="['/fermentos', fermentos.id, 'view']">{{ fermentos.id }}</a>
+                    </td>
+                    <td>{{ fermentos.fecha | formatMediumDatetime }}</td>
+                    <td>{{ fermentos.peso }}</td>
+                    <td>{{ fermentos.calidad }}</td>
+                    <td>{{ fermentos.detalle }}</td>
+                    <td>{{ fermentos.tipoQueso }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit" [routerLink]="['/fermentos', fermentos.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">Ver</span>
+              </button>
+
+                            <button type="submit" [routerLink]="['/fermentos', fermentos.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Editar</span>
+              </button>
+
+                            <button type="submit" (click)="delete(fermentos)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Eliminar</span>
+              </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="fermentos && fermentos.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

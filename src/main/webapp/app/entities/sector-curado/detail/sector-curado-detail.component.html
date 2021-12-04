@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sectorCurado">
+            <h2 data-cy="sectorCuradoDetailsHeading"><span>Sector Curado</span></h2>
+
+            <hr />
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <jhi-alert></jhi-alert>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>ID</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.id }}</span>
+                </dd>
+                <dt><span>Fecha Ent</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.fechaEnt | formatMediumDatetime }}</span>
+                </dd>
+                <dt><span>Fecha Sal</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.fechaSal | formatMediumDatetime }}</span>
+                </dd>
+                <dt><span>Temperatura</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.temperatura }}</span>
+                </dd>
+                <dt><span>Calidad</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.calidad }}</span>
+                </dd>
+                <dt><span>Humedad</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.humedad }}</span>
+                </dd>
+                <dt>
+          <span>CO<sub>2</sub></span>
+        </dt>
+                <dd>
+                    <span>{{ sectorCurado.co2 }}</span>
+                </dd>
+                <dt><span>Peso Ent</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.pesoEnt }}</span>
+                </dd>
+                <dt><span>Peso Sal</span></dt>
+                <dd>
+                    <span>{{ sectorCurado.pesoSal }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Atrás</span>
+      </button>
+
+            <button type="button" [routerLink]="['/sector-curado', sectorCurado.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+        </div>
+    </div>
+</div>

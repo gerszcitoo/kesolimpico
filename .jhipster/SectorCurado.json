@@ -1,0 +1,51 @@
+{
+  "name": "SectorCurado",
+  "fields": [
+    {
+      "fieldName": "fechaEnt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaSal",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "temperatura",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "calidad",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMin": "1",
+      "fieldValidateRulesMax": "10"
+    },
+    {
+      "fieldName": "humedad",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "co2",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pesoEnt",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pesoSal",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "sector_curado",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211124042645"
+}

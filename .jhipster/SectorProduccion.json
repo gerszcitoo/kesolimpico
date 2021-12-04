@@ -1,0 +1,33 @@
+{
+  "name": "SectorProduccion",
+  "fields": [
+    {
+      "fieldName": "peso",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fermentos",
+      "otherEntityRelationshipName": "sectorProduccion",
+      "relationshipName": "fermentos"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "recepcion",
+      "otherEntityRelationshipName": "sectorProduccion",
+      "relationshipName": "recepcion"
+    }
+  ],
+  "entityTableName": "sector_produccion",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211124042644"
+}

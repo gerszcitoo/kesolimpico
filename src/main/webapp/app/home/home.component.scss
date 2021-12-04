@@ -1,0 +1,315 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+body {
+    min-height: 90vh;
+    align-items: center;
+}
+
+// --------------- COLUMNAS INICIO SI-> INICIO SESION ----------------------------
+.contenido {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    height: 90vh;
+}
+
+.col1 {
+    width: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 2px dashed rgb(0, 0, 0, 0.3);
+    background: rgb(0, 0, 0, 0.05);
+}
+
+.col1 p {
+    color: #1e1e1d;
+    margin-top: 20px;
+}
+
+.col2 {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.title1 {
+    font-size: 2.5rem;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 30px;
+    color: #1e1e1d;
+}
+
+.title2 {
+    font-size: 2.5rem;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    margin-top: 30px;
+    color: #1e1e1d;
+}
+
+// --------------------------- CARTAS INICIO ------------------------
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.destinos {
+    display: grid;
+    gap: 1rem;
+    // grid-auto-rows: 10rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    color: white;
+    height: auto;
+}
+
+.card {
+    overflow: hidden;
+    text-align: center;
+    border-radius: 4px;
+    margin: 1rem;
+    border-radius: 0.3rem;
+    background: rgb(236, 231, 212, 0.5);
+    border: 1px solid rgb(200, 200, 200);
+    color: #000;
+    transition: .2s;
+    height: 100px;
+}
+
+.card:hover {
+    box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card h2 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.card h4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+// FIN CARTAS
+// ----------- INICIO SI-> NO INICIO SESION-------------------- 
+.texto-nologged {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    // gap: 2rem;
+}
+
+// ---- COLUMNA 1 ----
+.col1-nologged {
+    width: 100%;
+    height: 70vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../../../../imagenes/quesos.gif);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title1-nologged {
+    font-size: 2.5rem;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    color: white;
+}
+
+.login {
+    text-decoration: none;
+    color: white;
+    border: 2px dashed white;
+    font-weight: 700;
+    width: 145px;
+    height: 45px;
+    border-radius: 2rem;
+    margin-top: 50px;
+    transition: 0.2s;
+}
+
+.login p {
+    margin-top: 9px;
+    margin-left: 17px;
+}
+
+.login:hover {
+    box-shadow: #111111 5px 5px;
+}
+
+// ---- COLUMNA 2 ----
+.col2-nologged {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.title2-nologged {
+    font-size: 2.5rem;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+}
+
+.about {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+// ------------------------- FOOTER --------------------------
+
+/* -----------------------CONTACTO--------------------- */
+
+footer {
+    background: rgb(255, 255, 122);
+}
+
+.iconos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.footer h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #111111;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.icon-button {
+    // background-color: #111111;
+    border-radius: 3.6rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    margin: 0 5px;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 3.6rem;
+    border: 2px dashed black;
+}
+
+.icon-button:nth-child(2) {
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.icon-button span {
+    border-radius: 0;
+    display: block;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    height: 0;
+    width: 0;
+}
+
+.icon-button:hover span {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 3.6rem;
+    margin: -1.8rem;
+}
+
+.icon-button i {
+    margin-left: -2px;
+    background: none;
+    color: black;
+    height: 3.6rem;
+    left: 0;
+    line-height: 3.6rem;
+    position: absolute;
+    top: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 3.6rem;
+    z-index: 10;
+}
+
+.icon-button i:hover {
+    color: white;
+}
+
+.icon-button .icon-facebook {
+    color: #3b5998;
+}
+
+.icon-button:hover .icon-facebook {
+    color: white;
+}
+
+.facebook span {
+    background-color: #3b5998;
+}
+
+.instagram span {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.email span {
+    background: #eb2222;
+}
+
+// ------------------------- FIN FOOTER --------------------------
+// ---------- RESPONSIVE ---------
+@media (max-width: 730px) {
+    .texto {
+        flex-direction: column;
+    }
+    .col1 {
+        width: 95%;
+        margin: auto;
+        margin-left: 10px;
+        border-right: none;
+    }
+    .col2 {
+        width: 95%;
+        margin: auto;
+        margin-left: 10px;
+    }
+}

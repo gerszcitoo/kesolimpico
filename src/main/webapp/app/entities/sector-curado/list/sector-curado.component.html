@@ -1,0 +1,114 @@
+<div>
+    <h2 id="page-heading" data-cy="SectorCuradoHeading">
+        <span>Sectores de Curado</span>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refrescar Lista</span>
+      </button>
+
+            <button id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-sector-curado" [routerLink]="['/sector-curado/new']">
+        <fa-icon icon="plus"></fa-icon>
+        <span> Crear un nuevo Sector de Curado </span>
+      </button>
+        </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="sectorCurados?.length === 0">
+        <span>No se encontraron Sectores de Curado</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="sectorCurados && sectorCurados.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col" jhiSortBy="id">
+                        <span>ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="fechaEnt">
+                        <span>Fecha Ent</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="fechaSal">
+                        <span>Fecha Sal</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="temperatura">
+                        <span>Temperatura</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="calidad">
+                        <span>Calidad</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="humedad">
+                        <span>Humedad</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="co2">
+                        <span>CO<sub>2</sub></span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="pesoEnt">
+                        <span>Peso Ent</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="pesoSal">
+                        <span>Peso Sal</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sectorCurado of sectorCurados; trackBy: trackId" data-cy="entityTable">
+                    <td>
+                        <a [routerLink]="['/sector-curado', sectorCurado.id, 'view']">{{ sectorCurado.id }}</a>
+                    </td>
+                    <td>{{ sectorCurado.fechaEnt | formatMediumDatetime }}</td>
+                    <td>{{ sectorCurado.fechaSal | formatMediumDatetime }}</td>
+                    <td>{{ sectorCurado.temperatura }}</td>
+                    <td>{{ sectorCurado.calidad }}</td>
+                    <td>{{ sectorCurado.humedad }}</td>
+                    <td>{{ sectorCurado.co2 }}</td>
+                    <td>{{ sectorCurado.pesoEnt }}</td>
+                    <td>{{ sectorCurado.pesoSal }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit" [routerLink]="['/sector-curado', sectorCurado.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">Ver</span>
+              </button>
+
+                            <button type="submit" [routerLink]="['/sector-curado', sectorCurado.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Editar</span>
+              </button>
+
+                            <button type="submit" (click)="delete(sectorCurado)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Eliminar</span>
+              </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="sectorCurados && sectorCurados.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

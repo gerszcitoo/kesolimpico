@@ -1,0 +1,242 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    height: 100vh;
+    color: #000;
+}
+
+
+/* ==============================================================
+FONDO
+===============================================================*/
+
+.pantalla {
+    background-color: #fff;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contenedor {
+    /* width: min(100%, 100rem); */
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* ==============================================================
+LOGIN
+===============================================================*/
+
+.login {
+    display: flex;
+    align-items: center;
+}
+
+.imgLogin {
+    height: 100%;
+    width: 60vw;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../../../imagenes/quesoimg.jpg);
+    background-size: cover;
+    /* border-radius: 0 4rem 0 0; */
+    position: relative;
+    background-position: center center;
+}
+
+.welcome {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.si-cuenta {
+    font-size: 1.5rem;
+}
+
+.loginLink {
+    position: absolute;
+    margin-left: 5rem;
+    font-size: 2rem;
+    color: #fff;
+}
+
+
+/* ==============================================================
+BOTON LOGIN
+===============================================================*/
+
+.btn-loginOwn {
+    user-select: none;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    /* background-color: #1ABC9C; */
+    background-color: #f1e210;
+    font-size: 1rem;
+    border-radius: 2rem;
+    width: 10rem;
+    border: 1px solid transparent;
+    text-transform: initial;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.btn-loginOwn:hover {
+    /* background-color: #E91E63; */
+    background-color: #e9cb1e;
+}
+
+.btn-registerOwn:focus {
+    box-shadow: 0 0 0 0.3rem rgb(0 0 0 / 50%);
+    background-color: #e9cb1e;
+}
+
+.btn-loginOwn:active,
+.btn-loginOwn:visited {
+    border-color: #e9cb1e;
+    background-color: #e9cb1e;
+}
+
+
+/* ==============================================================
+FORMULARIO REGISTER
+===============================================================*/
+
+.formRegister {
+    justify-content: center;
+    align-items: center;
+}
+
+.register {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6rem;
+    align-items: center;
+}
+
+.formulario-group {
+    width: 100%;
+}
+
+.formBorderActiveUser:focus {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.42);
+    outline: 0;
+    margin-bottom: -1px;
+}
+
+.formBorderActivePass:focus {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.42);
+    outline: 0;
+    margin-bottom: -1px;
+}
+
+.formulario-control {
+    outline: 0;
+    box-sizing: border-box;
+    border: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    padding: 0.6rem 0 0.7rem;
+    margin-top: 2rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-danger {
+    text-align: start;
+    margin-left: 2%;
+}
+
+.titulo {
+    font-size: 2rem;
+}
+
+.margin-top-1 {
+    margin-top: 1rem;
+}
+
+.confirmPassword {
+    margin-top: -50px;
+}
+
+
+/* ==============================================================
+BOTON REGISTER
+===============================================================*/
+
+.btn-registerOwn {
+    user-select: none;
+    margin-top: 2rem;
+    padding: 0.6rem 1.2rem;
+    /* background-color: #1ABC9C; */
+    background-color: #e9cb1e;
+    font-size: 1rem;
+    border-radius: 2rem;
+    width: 10rem;
+    border: 1px solid transparent;
+    text-transform: initial;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.btn-registerOwn:hover {
+    /* background-color: #E91E63; */
+    background-color: #e9cb1e;
+}
+
+.btn-registerOwn:disabled {
+    background-color: #e9cb1e;
+    cursor: not-allowed;
+}
+
+.btn-registerOwn:active,
+.btn-registerOwn:visited {
+    border-color: #e9cb1e;
+    background-color: #e9cb1e;
+}
+
+.btn-registerOwn:focus {
+    box-shadow: 0 0 0 0.3rem rgb(0 0 0 / 50%);
+    background-color: #e9cb1e;
+}
+
+
+/* ==============================================================
+MEDIA QUERIES
+===============================================================*/
+
+@media screen and (max-width: 950px) {
+    body {
+        max-height: 89vh;
+    }
+    .titulo {
+        display: none;
+    }
+    .login {
+        display: none;
+    }
+    .register {
+        margin-top: 50px;
+        width: 100%;
+        align-items: center;
+    }
+}

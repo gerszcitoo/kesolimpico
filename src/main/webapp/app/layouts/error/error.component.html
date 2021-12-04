@@ -1,0 +1,17 @@
+<div style="min-height: 90vh; display: flex; align-items: center; justify-content: center">
+    <div class="row">
+        <div class="col-md-4">
+            <span class="hipster img-fluid rounded"></span>
+        </div>
+
+        <div class="col-md-8">
+            <h1>Error!</h1>
+
+            <div *ngIf="errorMessage">
+                <div class="alert alert-danger" style="width: auto; min-width: 200px; display: flex; justify-content: center">
+                    {{ errorMessage }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
