@@ -1,5 +1,7 @@
 # kesolimpico
 
+This project was made for the 2021 Argentina National Programming Olympics, by: Israel Aruquipa, Ulises Dackevsky, Dylan Hoyos and Germán Sánchez.
+
 This application was generated using the [NodeJS blueprint](https://github.com/jhipster/generator-jhipster-nodejs) of JHipster 7.0.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.0.1](https://www.jhipster.tech/documentation-archive/v7.0.1). For any questions you can refer to the stream lead: [Angelo Manganiello](https://github.com/amanganiello90).
 
 ## Development
